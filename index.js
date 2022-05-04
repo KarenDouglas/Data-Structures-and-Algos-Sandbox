@@ -1,17 +1,15 @@
-const nemo = [ 'dory', 'charles', 'brody', 'twitch','nemo'];
-const large = new Array(10000).fill('nemo')
+// function compressFirstBox(boxes) {
+//   console.log(boxes[0])
+// }
+// O(1)--- Constant Time
 
-function findNemo(array) {
-  for(let i = 0 ; i < array.length; i++){
+const boxes = [1,2,3,4,5];
 
-    if(array[i] === 'nemo'){
-      console.log('found NEMO')
-    }
-  }
-
+function logFirstTwoBoxes(boxes){
+  console.log(boxes[0]) // O(1)
+  console.log(boxes[1])// O(1)
 }
 
-findNemo(large);
-// how does this function grow as the input increases? :   for every element in the array, there is an operation
-// O(n) ---It takes linear time to find nemo... so the Big O depends on the number of inputs. This is the most common type of complexity
-// n = size of the input 
+logFirstTwoBoxes(boxes);// O(2)
+
+// it doesn't matter how many inputs there are when it is constant time label it is O(n)
