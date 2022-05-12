@@ -1,12 +1,24 @@
-const strings = ['a', 'b','c','d'];
+class Player {
+  constructor(name, type){
+    console.log(this)
+    this.name = name;
+    this.type = type;
+  }
+  introduce(){
+    console.log(`Hi ${this.name}, I am ${this.type} class`)
+  }
+}
+class Wizard extends Player{
+  constructor(name, type){
+    super(name,type)
+  }
+  play(){
+    console.log(`wee I am ${this.type}`)
+  }
+}
 
-// 4 items on 4 shelves of storage in RAM takes up 16bytes of storage
+const wizard1 = new Wizard('Karen', 'Healer');
+const wizard2 = new Wizard('Sharon','Dark Magic' );
 
-// push O(1)
-// pop O(1)
-//unshift  O(n) because, not only is the first element added to the array, but also the index # for all of the elements in the array will change. Which is a loop.
-
-// splice  (start #, delete count, items to add)
-strings.splice(2,0, 'alien')// O(n)
-
-console.log(strings)
+wizard1.play();
+wizard2.introduce();
