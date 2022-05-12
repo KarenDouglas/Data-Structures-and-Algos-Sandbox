@@ -1,24 +1,47 @@
-class Player {
-  constructor(name, type){
-    console.log(this)
-    this.name = name;
-    this.type = type;
+// build an array thru classes
+
+class MyArray{
+    constructor(){
+      this.length = 0;
+      this.data  = {};
+    }
+    get(index) {
+    return this.data[index];
   }
-  introduce(){
-    console.log(`Hi ${this.name}, I am ${this.type} class`)
+  push(item) {
+    this.data[this.length] = item;
+    this.length++
+    return this.length
   }
-}
-class Wizard extends Player{
-  constructor(name, type){
-    super(name,type)
+
+  pop(){
+    const lastItem = this.data[this.length-1]
+    delete this.data[this.length-1];
+    this.length--;
+    return lastItem;
   }
-  play(){
-    console.log(`wee I am ${this.type}`)
+
+  delete(index){
+    const item = this.data[index];
+    this.shiftItems(index);
+    return item;
+  }
+  shiftItems(index){
+    for(let i = index; i<this.length-1; i++ ){
+      this.data[i] = this.data[i+1]
+    }
+     delete this.data[this.length-1];
+    this.length--
   }
 }
 
-const wizard1 = new Wizard('Karen', 'Healer');
-const wizard2 = new Wizard('Sharon','Dark Magic' );
 
-wizard1.play();
-wizard2.introduce();
+const newArray = new MyArray();
+newArray.push('hi');
+newArray.push('you');
+newArray.push('!');
+newArray.push('are');
+newArray.push('nice');
+
+newArray.delete(1)
+console.log(newArray)
