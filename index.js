@@ -1,15 +1,16 @@
-// function compressFirstBox(boxes) {
-//   console.log(boxes[0])
-// }
-// O(1)--- Constant Time
+// when I create this object each key value pair will be stored somewhere in memory at different addresses
+// these should be used in a lot of cases
+// problems with hash tables: with enough data hash collisions are inevitable
+// when has collisions occur it uses space of O(n)because I would need to loop within a a hash address to find values
 
-const boxes = [1,2,3,4,5];
-
-function logFirstTwoBoxes(boxes){
-  console.log(boxes[0]) // O(1)
-  console.log(boxes[1])// O(1)
+let user = {
+  age: 54,
+  name: "Kyle",
+  magic: true,
+  scream: function () {
+    console.log('ahhh')
+  }
+  
 }
 
-logFirstTwoBoxes(boxes);// O(2)
-
-// it doesn't matter how many inputs there are when it is constant time label it is O(n)
+console.log(user.magic) // O(1) time
