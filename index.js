@@ -1,16 +1,61 @@
-// when I create this object each key value pair will be stored somewhere in memory at different addresses
-// these should be used in a lot of cases
-// problems with hash tables: with enough data hash collisions are inevitable
-// when has collisions occur it uses space of O(n)because I would need to loop within a a hash address to find values
-
-let user = {
-  age: 54,
-  name: "Kyle",
-  magic: true,
-  scream: function () {
-    console.log('ahhh')
+class HashTable {
+  constructor(size){
+    this.data = new Array(size);
+    
+    
   }
+
+  _hash(key) {
+    let hash = 0;
+    for (let i =0; i < key.length; i++){
+        hash = (hash + key.charCodeAt(i) * i) % this.data.length
+    }
+    return hash;
+  }
+
+  set(key,value) {
+
+    
+    let address = this._hash(key);
+
+  if(!this.data[address]){
+     this.data[address]= []
+   
+  } 
+    this.data[address].push([key,value])
   
+     return this.data
+      
+    };
+
+ get(key) {
+ let address = this._hash(key);
+ const currentBucket= this.data[address];
+  // console.log('in the class',currentBucket, key)
+   if(currentBucket){
+     
+     for(let i = 0;i< currentBucket.length; i++){
+       //console.log('inside loop', currentBucket[i])
+       if(currentBucket[i][0]=== key){
+         return currentBucket[i][1]
+       }
+      
+     }
+   }
+   
+   return undefined
+    
+    }
 }
 
-console.log(user.magic) // O(1) time
+const myHashTable = new HashTable(2);
+console.log(myHashTable)
+console.log('set',myHashTable.set('grapes', 10000))
+console.log(myHashTable)
+console.log('set',myHashTable.set('apples', 9))
+console.log(myHashTable)
+console.log('get',myHashTable.get('apples'))
+
+
+
+//underscores are generally used to indicate private properties
